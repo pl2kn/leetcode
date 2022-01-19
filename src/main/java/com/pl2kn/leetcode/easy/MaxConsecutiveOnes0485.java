@@ -1,6 +1,6 @@
-package com.pl2kn.leetcode.explore.arrays;
+package com.pl2kn.leetcode.easy;
 
-public class MaxConsecutiveOnes {
+public class MaxConsecutiveOnes0485 {
 
   public int findMaxConsecutiveOnes(int[] nums) {
     int maxOnes = 0;

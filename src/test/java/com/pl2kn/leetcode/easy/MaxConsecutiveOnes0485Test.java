@@ -1,38 +1,38 @@
-package com.pl2kn.leetcode.explore.arrays;
+package com.pl2kn.leetcode.easy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class MaxConsecutiveOnesTest {
+public class MaxConsecutiveOnes0485Test {
 
   @Test
   public void One_Sequence_In_Beginning_Test() {
-    MaxConsecutiveOnes mco = new MaxConsecutiveOnes();
+    MaxConsecutiveOnes0485 mco = new MaxConsecutiveOnes0485();
     assertEquals(3, mco.findMaxConsecutiveOnes(new int[]{1, 1, 1, 0, 0}));
   }
 
   @Test
   public void One_Sequence_In_Middle_Test() {
-    MaxConsecutiveOnes mco = new MaxConsecutiveOnes();
+    MaxConsecutiveOnes0485 mco = new MaxConsecutiveOnes0485();
     assertEquals(3, mco.findMaxConsecutiveOnes(new int[]{0, 0, 1, 1, 1, 0, 0}));
   }
 
   @Test
   public void One_Sequence_In_End_Test() {
-    MaxConsecutiveOnes mco = new MaxConsecutiveOnes();
+    MaxConsecutiveOnes0485 mco = new MaxConsecutiveOnes0485();
     assertEquals(3, mco.findMaxConsecutiveOnes(new int[]{0, 0, 1, 1, 1}));
   }
 
   @Test
   public void One_Long_First_Test() {
-    MaxConsecutiveOnes mco = new MaxConsecutiveOnes();
+    MaxConsecutiveOnes0485 mco = new MaxConsecutiveOnes0485();
     assertEquals(3, mco.findMaxConsecutiveOnes(new int[]{0, 0, 1, 1, 1, 0, 0, 1, 1, 0}));
   }
 
   @Test
   public void One_Long_Last_Test() {
-    MaxConsecutiveOnes mco = new MaxConsecutiveOnes();
+    MaxConsecutiveOnes0485 mco = new MaxConsecutiveOnes0485();
     assertEquals(4, mco.findMaxConsecutiveOnes(new int[]{0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0}));
   }
 }
