@@ -3,37 +3,19 @@ package com.pl2kn.leetcode.easy;
 public class SquaresOfASortedArray977 {
 
   public int[] sortedSquares(int[] nums) {
-    int lastNegativeIndex = 0;
     int length = nums.length;
-    for (int i = 0; i < length; i++) {
-      if (nums[i] < 0) {
-        lastNegativeIndex = i;
+    int[] result = new int[length];
+    int left = 0;
+    int right = length - 1;
+    for (int i = length - 1; i >= 0; i--) {
+      int num;
+      if (Math.abs(nums[left]) < nums[right]) {
+        num = nums[right--];
       } else {
-        break;
+        num = nums[left++];
       }
+      result[i] = num * num;
     }
-    int[] sortedNumSquares = new int[length];
-    int sortedIndex = 0;
-    int negativeIndex = lastNegativeIndex;
-    int notNegativeIndex = lastNegativeIndex + 1;
-    while (negativeIndex >= 0 && notNegativeIndex < length) {
-      int negativeSquare = nums[negativeIndex] * nums[negativeIndex];
-      int notNegativeSquare = nums[notNegativeIndex] * nums[notNegativeIndex];
-      if (negativeSquare < notNegativeSquare) {
-        sortedNumSquares[sortedIndex] = negativeSquare;
-        negativeIndex--;
-      } else {
-        sortedNumSquares[sortedIndex] = notNegativeSquare;
-        notNegativeIndex++;
-      }
-      sortedIndex++;
-    }
-    for (int i = negativeIndex; i >= 0; i --) {
-      sortedNumSquares[sortedIndex++] = nums[i] * nums[i];
-    }
-    for (int i = notNegativeIndex; i < length; i ++) {
-      sortedNumSquares[sortedIndex++] = nums[i] * nums[i];
-    }
-    return sortedNumSquares;
+    return result;
   }
 }
