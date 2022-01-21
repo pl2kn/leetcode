@@ -1,4 +1,4 @@
-package com.pl2kn.leetcode.easy;
+package com.pl2kn.leetcode.problems.easy;
 
 public class MaxConsecutiveOnes0485 {
 
