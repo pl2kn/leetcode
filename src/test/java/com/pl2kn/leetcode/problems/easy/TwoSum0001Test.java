@@ -2,7 +2,6 @@ package com.pl2kn.leetcode.problems.easy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.pl2kn.leetcode.problems.easy.TwoSum0001;
 import org.junit.jupiter.api.Test;
 
 public class TwoSum0001Test {
