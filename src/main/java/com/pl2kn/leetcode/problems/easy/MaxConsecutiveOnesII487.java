@@ -3,26 +3,23 @@ package com.pl2kn.leetcode.problems.easy;
 public class MaxConsecutiveOnesII487 {
 
   public int findMaxConsecutiveOnes(int[] nums) {
+    int left = 0;
+    int right = 0;
+    int zeroCount = 0;
     int maxCount = 0;
-    int count = 0;
-    boolean flipped = false;
-    int flippedIndex = 0;
-    for (int i = 0; i < nums.length; i++) {
-      int num = nums[i];
-      if (num == 0 && !flipped) {
-        num = 1;
-        flipped = true;
-        flippedIndex = i;
+    while (right < nums.length) {
+      if (nums[right] == 0) {
+        zeroCount++;
       }
-      if (num == 1) {
-        count++;
-      } else {
-        maxCount = Math.max(count, maxCount);
-        count = 0;
-        flipped = false;
-        i = flippedIndex;
+      while (zeroCount == 2) {
+        if (nums[left] == 0) {
+          zeroCount--;
+        }
+        left++;
       }
+      maxCount = Math.max(maxCount, right - left + 1);
+      right++;
     }
-    return Math.max(count, maxCount);
+    return maxCount;
   }
 }
