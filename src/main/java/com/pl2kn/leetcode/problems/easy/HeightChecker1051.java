@@ -1,22 +1,21 @@
 package com.pl2kn.leetcode.problems.easy;
 
-import java.util.Arrays;
-
 public class HeightChecker1051 {
 
   public int heightChecker(int[] heights) {
-    int length = heights.length;
-    int[] expected = new int[length];
-    for (int i = 0; i < length; i++) {
-      expected[i] = heights[i];
+    int[] counts = new int[102];
+    for (int height : heights) {
+      counts[height + 1]++;
     }
-    Arrays.sort(expected);
-    int count = 0;
-    for (int i = 0; i < length; i++) {
-      if (heights[i] != expected[i]) {
-        count++;
+    for (int i = 1; i < 101; i++) {
+      counts[i + 1] += counts[i];
+    }
+    int result = 0;
+    for (int height : heights) {
+      if (heights[counts[height]++] != height) {
+        result++;
       }
     }
-    return count;
+    return result;
   }
 }
