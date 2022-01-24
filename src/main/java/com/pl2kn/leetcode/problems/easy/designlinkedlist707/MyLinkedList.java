@@ -12,10 +12,11 @@ class MyLinkedList {
     }
   }
 
-  private Node head;
+  private final Node head;
   private int size;
 
   public MyLinkedList() {
+    head = new Node(0);
     size = 0;
   }
 
@@ -24,7 +25,7 @@ class MyLinkedList {
       return -1;
     }
     Node currentNode = head;
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i <= index; i++) {
       currentNode = currentNode.next;
     }
     return currentNode.value;
@@ -42,34 +43,25 @@ class MyLinkedList {
     if (index < 0 || index > size) {
       return;
     }
-    Node node = new Node(val);
-    if (index == 0) {
-      node.next = head;
-      head = node;
-    } else {
-      Node currentNode = head;
-      for (int i = 0; i < index - 1; i++) {
-        currentNode = currentNode.next;
-      }
-      node.next = currentNode.next;
-      currentNode.next = node;
+    Node previousNode = head;
+    for (int i = 0; i < index; i++) {
+      previousNode = previousNode.next;
     }
+    Node node = new Node(val);
+    node.next = previousNode.next;
+    previousNode.next = node;
     size++;
   }
 
   public void deleteAtIndex(int index) {
-    if (size == 0 || index < 0 || index >= size) {
+    if (index < 0 || index >= size) {
       return;
     }
-    if (index == 0) {
-      head = head.next;
-    } else {
-      Node previousNode = head;
-      for (int i = 0; i < index - 1; i++) {
-        previousNode = previousNode.next;
-      }
-      previousNode.next = previousNode.next.next;
+    Node previousNode = head;
+    for (int i = 0; i < index; i++) {
+      previousNode = previousNode.next;
     }
-    size--;
+    previousNode.next = previousNode.next.next;
+    size --;
   }
 }
