@@ -14,18 +14,15 @@ public class LinkedListCycle141 {
   }
 
   public boolean hasCycle(ListNode head) {
-    if (head == null) {
-      return false;
-    }
-    ListNode slowPointer = head;
-    ListNode fastPointer = head.next;
-    while (fastPointer != null && slowPointer != fastPointer) {
-      slowPointer = slowPointer.next;
-      fastPointer = fastPointer.next;
-      if (fastPointer != null) {
-        fastPointer = fastPointer.next;
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (slow == fast) {
+        return true;
       }
     }
-    return slowPointer == fastPointer;
+    return false;
   }
 }
