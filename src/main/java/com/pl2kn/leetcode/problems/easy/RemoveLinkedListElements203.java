@@ -7,13 +7,15 @@ public class RemoveLinkedListElements203 {
   public ListNode removeElements(ListNode head, int val) {
     ListNode sentinel = new ListNode(0);
     sentinel.next = head;
-    ListNode current = sentinel;
-    while (current.next != null) {
-      if (current.next.val == val) {
-        current.next = current.next.next;
+    ListNode current = head;
+    ListNode previous = sentinel;
+    while (current != null) {
+      if (current.val == val) {
+        previous.next = current.next;
       } else {
-        current = current.next;
+        previous = previous.next;
       }
+      current = current.next;
     }
     return sentinel.next;
   }
