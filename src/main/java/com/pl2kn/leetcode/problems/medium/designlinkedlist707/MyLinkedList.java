@@ -1,4 +1,4 @@
-package com.pl2kn.leetcode.problems.easy.designlinkedlist707;
+package com.pl2kn.leetcode.problems.medium.designlinkedlist707;
 
 class MyLinkedList {
 

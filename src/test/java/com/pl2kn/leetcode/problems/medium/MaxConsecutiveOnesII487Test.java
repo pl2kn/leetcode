@@ -1,4 +1,4 @@
-package com.pl2kn.leetcode.problems.easy;
+package com.pl2kn.leetcode.problems.medium;
 
 import static org.junit.jupiter.api.Assertions.*;
 
