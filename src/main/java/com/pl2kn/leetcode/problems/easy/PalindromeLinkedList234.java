@@ -5,6 +5,9 @@ import com.pl2kn.leetcode.problems.common.ListNode;
 public class PalindromeLinkedList234 {
 
   public boolean isPalindrome(ListNode head) {
+    if (head == null) {
+      return true;
+    }
     ListNode slow = head;
     ListNode fast = head;
     while (fast != null && fast.next != null) {
