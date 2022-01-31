@@ -9,19 +9,16 @@ public class BinaryTreePreorderTraversal144Iterative {
 
   public List<Integer> preorderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList<>();
-    if (root == null) {
-      return result;
-    }
     Stack<TreeNode> stack = new Stack<>();
-    stack.add(root);
-    while (!stack.isEmpty()) {
-      TreeNode node = stack.pop();
-      result.add(node.val);
-      if (node.right != null) {
-        stack.push(node.right);
-      }
-      if (node.left != null) {
-        stack.push(node.left);
+    TreeNode current = root;
+    while (current != null || !stack.isEmpty()) {
+      if (current != null) {
+        result.add(current.val);
+        stack.push(current);
+        current = current.left;
+      } else {
+        TreeNode node = stack.pop();
+        current = node.right;
       }
     }
     return result;

@@ -12,13 +12,14 @@ public class BinaryTreeInorderTraversal94Iterative {
     Stack<TreeNode> stack = new Stack<>();
     TreeNode current = root;
     while (current != null || !stack.isEmpty()) {
-      while (current != null) {
+      if (current != null) {
         stack.push(current);
         current = current.left;
+      } else {
+        TreeNode node = stack.pop();
+        result.add(node.val);
+        current = node.right;
       }
-      current = stack.pop();
-      result.add(current.val);
-      current = current.right;
     }
     return result;
   }
