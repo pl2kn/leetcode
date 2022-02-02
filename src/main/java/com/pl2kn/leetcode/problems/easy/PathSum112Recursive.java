@@ -8,18 +8,9 @@ public class PathSum112Recursive {
     if (root == null) {
       return false;
     }
-    return hasPathSum(root, 0, targetSum);
-  }
-
-  private boolean hasPathSum(TreeNode node, int currentSum, int targetSum) {
-    if (node == null) {
-      return false;
+    if (root.left == null && root.right == null) {
+      return targetSum - root.val == 0;
     }
-    currentSum += node.val;
-    if (node.left == null && node.right == null) {
-      return currentSum == targetSum;
-    }
-    return hasPathSum(node.left, currentSum, targetSum)
-        || hasPathSum(node.right, currentSum, targetSum);
+    return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
   }
 }
