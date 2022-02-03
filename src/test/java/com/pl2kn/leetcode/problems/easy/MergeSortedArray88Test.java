@@ -8,11 +8,11 @@ public class MergeSortedArray88Test {
 
   @Test
   public void Simple_Test() {
-    int[] nums1 = {1,2,3,0,0,0};
-    int[] nums2 = {2,5,6};
+    int[] nums1 = {1, 2, 3, 0, 0, 0};
+    int[] nums2 = {2, 5, 6};
     MergeSortedArray88 solution = new MergeSortedArray88();
     solution.merge(nums1, 3, nums2, 3);
-    assertArrayEquals(new int[]{1,2,2,3,5,6}, nums1);
+    assertArrayEquals(new int[]{1, 2, 2, 3, 5, 6}, nums1);
   }
 
   @Test
@@ -31,5 +31,14 @@ public class MergeSortedArray88Test {
     MergeSortedArray88 solution = new MergeSortedArray88();
     solution.merge(nums1, 0, nums2, 1);
     assertArrayEquals(new int[]{1}, nums1);
+  }
+
+  @Test
+  public void First_Array_Last_Max_Element_Test() {
+    int[] nums1 = {1, 2, 7, 0, 0, 0};
+    int[] nums2 = {2, 5, 6};
+    MergeSortedArray88 solution = new MergeSortedArray88();
+    solution.merge(nums1, 3, nums2, 3);
+    assertArrayEquals(new int[]{1, 2, 2, 5, 6, 7}, nums1);
   }
 }
