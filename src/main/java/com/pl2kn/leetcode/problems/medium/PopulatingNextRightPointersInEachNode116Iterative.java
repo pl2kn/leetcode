@@ -34,26 +34,19 @@ public class PopulatingNextRightPointersInEachNode116Iterative {
     Queue<Node> queue = new LinkedList<>();
     queue.add(root);
     while (!queue.isEmpty()) {
-      Node previous = queue.remove();
       int queueSize = queue.size();
-      if (previous.left != null) {
-        queue.add(previous.left);
-      }
-      if (previous.right != null) {
-        queue.add(previous.right);
-      }
       for (int i = 0; i < queueSize; i++) {
-        Node current = queue.remove();
-        previous.next = current;
-        previous = current;
-        if (previous.left != null) {
-          queue.add(previous.left);
+        Node node = queue.remove();
+        if (i < queueSize - 1) {
+          node.next = queue.peek();
         }
-        if (previous.right != null) {
-          queue.add(previous.right);
+        if (node.left != null) {
+          queue.add(node.left);
+        }
+        if (node.right != null) {
+          queue.add(node.right);
         }
       }
-      previous.next = null;
     }
     return root;
   }
