@@ -13,30 +13,27 @@ public class SpiralMatrix54 {
     int right = n - 1;
     int top = 0;
     int bottom = m - 1;
-    int row = 0;
-    int col = 0;
     while (result.size() < m * n) {
-      while (col <= right && result.size() < m * n) {
-        result.add(matrix[top][col++]);
+      for (int j = left; j <= right; j++) {
+        result.add(matrix[top][j]);
       }
-      row = top + 1;
-      while (row <= bottom && result.size() < m * n) {
-        result.add(matrix[row++][right]);
+      for (int i = top + 1; i <= bottom; i++) {
+        result.add(matrix[i][right]);
       }
-      col = right - 1;
-      while (col >= left && result.size() < m * n) {
-        result.add(matrix[bottom][col--]);
+      if (top != bottom) {
+        for (int j = right - 1; j >= left; j--) {
+          result.add(matrix[bottom][j]);
+        }
       }
-      row = bottom - 1;
-      while (row > top && result.size() < m * n) {
-        result.add(matrix[row--][left]);
+      if (left != right) {
+        for (int i = bottom - 1; i >= top + 1; i--) {
+          result.add(matrix[i][left]);
+        }
       }
       top++;
       left++;
       right--;
       bottom--;
-      row = top;
-      col = left;
     }
     return result;
   }
