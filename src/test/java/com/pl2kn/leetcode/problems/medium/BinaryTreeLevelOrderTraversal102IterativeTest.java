@@ -1,6 +1,5 @@
 package com.pl2kn.leetcode.problems.medium;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.pl2kn.leetcode.problems.common.TreeNode;
 import org.junit.jupiter.api.Test;
