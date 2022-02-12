@@ -1,27 +1,29 @@
 package com.pl2kn.leetcode.problems.easy.movingaveragefromdatastream356;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class MovingAverage {
 
-  private final Queue<Integer> queue;
+  private int head;
 
   private int sum;
 
   private int size;
 
+  private final int[] queue;
+
   public MovingAverage(int size) {
-    queue = new LinkedList<>();
-    this.size = size;
+    queue = new int[size];
+    size = 0;
+    head = 0;
   }
 
   public double next(int val) {
-    if (queue.size() >= size) {
-      sum -= queue.remove();
+    if (size < queue.length) {
+      size++;
     }
-    queue.add(val);
+    sum -= queue[head];
     sum += val;
-    return 1.0 * sum / queue.size();
+    queue[head] = val;
+    head = (head + 1) % queue.length;
+    return (double) sum / size;
   }
 }
