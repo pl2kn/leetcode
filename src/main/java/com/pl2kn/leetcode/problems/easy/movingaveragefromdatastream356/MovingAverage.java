@@ -2,28 +2,23 @@ package com.pl2kn.leetcode.problems.easy.movingaveragefromdatastream356;
 
 public class MovingAverage {
 
+  private final int size;
   private int head;
-
-  private int sum;
-
-  private int size;
-
-  private final int[] queue;
+  private int sum = 0;
+  private int count = 0;
+  int[] queue;
 
   public MovingAverage(int size) {
+    this.size = size;
     queue = new int[size];
-    size = 0;
-    head = 0;
   }
 
   public double next(int val) {
-    if (size < queue.length) {
-      size++;
-    }
-    sum -= queue[head];
-    sum += val;
+    ++count;
+    int tail = (head + 1) % size;
+    sum = sum - queue[tail] + val;
+    head = (head + 1) % size;
     queue[head] = val;
-    head = (head + 1) % queue.length;
-    return (double) sum / size;
+    return sum * 1.0 / Math.min(size, count);
   }
 }
