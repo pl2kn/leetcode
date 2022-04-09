@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TopKFrequentElements347QuickSelect {
-
   private final Map<Integer, Integer> counts = new HashMap<>();
 
   public int[] topKFrequent(int[] nums, int k) {
@@ -13,53 +12,53 @@ public class TopKFrequentElements347QuickSelect {
     }
 
     int n = counts.size();
-
-    int[] unique = new int[n];
+    int[] uniqueNums = new int[n];
     int i = 0;
     for (int num : counts.keySet()) {
-      unique[i++] = num;
+      uniqueNums[i++] = num;
     }
 
     int left = 0;
     int right = n - 1;
-    int index = n - k;
+    int index = 0;
     while (left <= right) {
-      index = partition(unique, left, right);
-      if (index == n - k) {
+      index = partition(uniqueNums, left, right);
+      if (index == k) {
         break;
       }
-      if (index < n - k) {
-        left = left + 1;
+      if (index > k) {
+        right = index - 1;
       } else {
-        right = right - 1;
+        left = index + 1;
       }
     }
 
     int[] result = new int[k];
-    int m = 0;
-    for (int j = index; j < n; j++) {
-      result[m++] = unique[j];
+    for (int j = 0; j < k; j++) {
+      result[j] = uniqueNums[j];
     }
 
     return result;
   }
 
-  private int partition(int[] array, int left, int right) {
-    int pivot = array[left];
+  private int partition(int[] nums, int left, int right) {
+    int pivot = nums[left];
     int index = left;
+
     for (int i = left + 1; i <= right; i++) {
-      if (counts.get(array[i]) < counts.get(pivot)) {
-        swap(array, ++index, i);
+      if (counts.get(nums[i]) > counts.get(pivot)) {
+        swap(nums, i, ++index);
       }
     }
-    swap(array, left, index);
+
+    swap(nums, left, index);
 
     return index;
   }
 
-  private void swap(int[] array, int i, int j) {
-    int temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+  private void swap(int[] nums, int i, int j) {
+    int tmp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = tmp;
   }
 }
