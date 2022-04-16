@@ -8,7 +8,7 @@ public class NumberOfProvinces547Test {
 
   @Test
   public void Simple_Test() {
-    NumberOfProvinces547UnionFind solution = new NumberOfProvinces547UnionFind();
+    NumberOfProvinces547Dfs solution = new NumberOfProvinces547Dfs();
     assertEquals(2, solution.findCircleNum(new int[][]{{1, 1, 0}, {1, 1, 0}, {0, 0, 1}}));
   }
 }
