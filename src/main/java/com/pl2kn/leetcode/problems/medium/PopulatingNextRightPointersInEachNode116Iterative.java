@@ -31,23 +31,31 @@ public class PopulatingNextRightPointersInEachNode116Iterative {
     if (root == null) {
       return null;
     }
+
     Queue<Node> queue = new LinkedList<>();
     queue.add(root);
-    while (!queue.isEmpty()) {
+
+    while(!queue.isEmpty()) {
       int queueSize = queue.size();
-      for (int i = 0; i < queueSize; i++) {
+      while (queueSize > 0) {
         Node node = queue.remove();
-        if (i < queueSize - 1) {
+
+        if (queueSize > 1) {
           node.next = queue.peek();
         }
+
         if (node.left != null) {
           queue.add(node.left);
         }
+
         if (node.right != null) {
           queue.add(node.right);
         }
+
+        queueSize--;
       }
     }
+
     return root;
   }
 }
