@@ -2,7 +2,7 @@ package com.pl2kn.leetcode.problems.medium;
 
 import java.util.PriorityQueue;
 
-public class MinCostToConnectAllPoints1584 {
+public class MinCostToConnectAllPoints1584Kruskal {
 
   public int minCostConnectPoints(int[][] points) {
     if (points == null || points.length == 0) {

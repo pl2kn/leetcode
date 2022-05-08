@@ -8,7 +8,7 @@ public class MinCostToConnectAllPoints1584Test {
 
   @Test
   public void Simple_Test() {
-    MinCostToConnectAllPoints1584 solution = new MinCostToConnectAllPoints1584();
+    MinCostToConnectAllPoints1584Kruskal solution = new MinCostToConnectAllPoints1584Kruskal();
     assertEquals(20,
         solution.minCostConnectPoints(new int[][]{{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}}));
   }
