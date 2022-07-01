@@ -1,6 +1,5 @@
 package com.pl2kn.leetcode.problems.easy;
 
-import com.sun.org.apache.xpath.internal.objects.XNumber;
 import java.util.HashMap;
 import java.util.Map;
 
