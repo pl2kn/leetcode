@@ -7,24 +7,15 @@ public class FirstMissingPositive41 {
     int i = 0;
     while (i < n) {
       int j = nums[i] - 1;
-      if (j < 0 || j >= n) {
-        nums[i++] = 0;
-        continue;
-      }
-
-      if (nums[i] != i + 1) {
-        if (nums[i] != nums[j]) {
-          swap(nums, i, j);
-        } else {
-          nums[i] = 0;
-        }
+      if (j >= 0 && j < n && nums[i] != nums[j]) {
+        swap(nums, i, j);
       } else {
         i++;
       }
     }
 
     for (i = 0; i < n; i++) {
-      if (nums[i] == 0) {
+      if (nums[i] != i + 1) {
         return i + 1;
       }
     }
