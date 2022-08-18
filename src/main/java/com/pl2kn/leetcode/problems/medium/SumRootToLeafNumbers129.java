@@ -4,26 +4,21 @@ import com.pl2kn.leetcode.problems.common.TreeNode;
 
 public class SumRootToLeafNumbers129 {
 
-  private int sum;
-
   public int sumNumbers(TreeNode root) {
-    helper(root, 0);
-
-    return sum;
+    return sumNumbers(root, 0);
   }
 
-  private void helper(TreeNode node, int currentNumber) {
+  private int sumNumbers(TreeNode node, int sum) {
     if (node == null) {
-      return;
+      return 0;
     }
 
-    currentNumber = currentNumber * 10 + node.val;
+    sum = sum * 10 + node.val;
 
     if (node.left == null && node.right == null) {
-      sum += currentNumber;
-    } else {
-      helper(node.left, currentNumber);
-      helper(node.right, currentNumber);
+      return sum;
     }
+
+    return sumNumbers(node.left, sum) + sumNumbers(node.right, sum);
   }
 }
