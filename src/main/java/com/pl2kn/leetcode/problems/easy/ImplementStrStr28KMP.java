@@ -30,7 +30,7 @@ public class ImplementStrStr28KMP {
       if (needle.charAt(i) == needle.charAt(j)) {
         kmp[i++] = j++ + 1;
       } else if (j > 0) {
-          j = kmp[j - 1];
+        j = kmp[j - 1];
       } else {
         kmp[i++] = 0;
       }
