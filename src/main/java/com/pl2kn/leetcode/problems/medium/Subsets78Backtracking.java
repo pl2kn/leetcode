@@ -5,32 +5,18 @@ import java.util.List;
 
 public class Subsets78Backtracking {
 
-  private int n;
-
-  private int k;
-
-  private List<List<Integer>> result;
-
   public List<List<Integer>> subsets(int[] nums) {
-    n = nums.length;
-    result = new ArrayList<>();
-
-    for (k = 0; k <= n; k++) {
-      backtrack(0, new ArrayList<>(), nums);
-    }
-
-    return result;
+    List<List<Integer>> list = new ArrayList<>();
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
   }
 
-  private void backtrack(int first, List<Integer> subset, int[] nums) {
-    if (subset.size() == k) {
-      result.add(new ArrayList<>(subset));
-    }
-
-    for (int i = first; i < n; i++) {
-      subset.add(nums[i]);
-      backtrack(i + 1, subset, nums);
-      subset.remove(subset.size() - 1);
+  private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+      tempList.add(nums[i]);
+      backtrack(list, tempList, nums, i + 1);
+      tempList.remove(tempList.size() - 1);
     }
   }
 }
