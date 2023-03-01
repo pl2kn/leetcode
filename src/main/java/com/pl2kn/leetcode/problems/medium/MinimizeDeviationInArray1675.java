@@ -30,5 +30,4 @@ public class MinimizeDeviationInArray1675 {
 
     return minDeviation;
   }
-\
 }
