@@ -16,6 +16,7 @@ public class SortAnArray912QuickSort {
   }
 
   private int partition(int[] nums, int left, int right) {
+    swap(nums, getRandomIndex(left, right), left);
     int pivot = nums[left];
     int index = left;
     for (int i = index + 1; i <= right; i++) {
@@ -31,5 +32,9 @@ public class SortAnArray912QuickSort {
     int tmp = nums[i];
     nums[i] = nums[j];
     nums[j] = tmp;
+  }
+
+  private int getRandomIndex(int left, int right) {
+    return (int) ((Math.random() * (right - left)) + left);
   }
 }
