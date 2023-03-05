@@ -6,33 +6,30 @@ public class ImplementStrStr28KMP {
     int[] kmp = buildKMP(needle);
     int i = 0;
     int j = 0;
-    int needleLength = needle.length();
-    int haystackLength = haystack.length();
-    while (i < haystackLength && j < needleLength) {
+    while (i < haystack.length() && j < needle.length()) {
       if (haystack.charAt(i) == needle.charAt(j)) {
-        j++;
         i++;
+        j++;
       } else if (j > 0) {
         j = kmp[j - 1];
       } else {
-        i++;
+        i = 0;
       }
     }
-    return j == needleLength ? i - needleLength : -1;
+    return j == needle.length() ? i - needle.length() : -1;
   }
 
-  private int[] buildKMP(String needle) {
-    int j = 0;
-    int i = 1;
-    int length = needle.length();
-    int[] kmp = new int[length];
-    while (i < length) {
-      if (needle.charAt(i) == needle.charAt(j)) {
-        kmp[i++] = j++ + 1;
-      } else if (j > 0) {
-        j = kmp[j - 1];
+  private int[] buildKMP(String string) {
+    int[] kmp = new int[string.length()];
+    int i = 0;
+    int j = 1;
+    while (j < string.length()) {
+      if (string.charAt(i) == string.charAt(j)) {
+        kmp[j++] = i++ + 1;
+      } else if (i > 0) {
+        i = kmp[i - 1];
       } else {
-        kmp[i++] = 0;
+        kmp[j++] = 0;
       }
     }
     return kmp;
