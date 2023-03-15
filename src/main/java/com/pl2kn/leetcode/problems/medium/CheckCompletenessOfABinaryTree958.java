@@ -10,27 +10,19 @@ public class CheckCompletenessOfABinaryTree958 {
     Queue<TreeNode> queue = new LinkedList<>();
     queue.add(root);
 
-    TreeNode leftMost = root;
+    boolean isNullNodeFound = false;
     while (!queue.isEmpty()) {
-      int queueSize = queue.size();
-      for (int i = 0; i < queueSize; i++) {
-        TreeNode node = queue.remove();
+      TreeNode node = queue.remove();
 
-        if (node.left != null) {
-          queue.add(node.left);
-          if (leftMost == null) {
-            return false;
-          }
+      if (node == null) {
+        isNullNodeFound = true;
+      } else {
+        if (isNullNodeFound) {
+          return false;
         }
-        leftMost = node.left;
 
-        if (node.right != null) {
-          queue.add(node.right);
-          if (leftMost == null) {
-            return false;
-          }
-        }
-        leftMost = node.right;
+        queue.add(node.left);
+        queue.add(node.right);
       }
     }
 
