@@ -1,21 +1,23 @@
 package com.pl2kn.leetcode.problems.medium;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
 
 public class OptimalPartitionOfString2405 {
 
   public int partitionString(String s) {
-    int count = 0;
-    Set<Character> chars = new HashSet<>();
-    for (char c : s.toCharArray()) {
-      if (chars.contains(c)) {
+    int[] lastSeen = new int[26];
+    Arrays.fill(lastSeen, -1);
+    int count = 1;
+    int start = 0;
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if (lastSeen[c - 'a'] >= start) {
         count++;
-        chars.clear();
+        start = i;
       }
-      chars.add(c);
+      lastSeen[c - 'a'] = i;
     }
 
-    return count + (chars.size() > 0 ? 1 : 0);
+    return count;
   }
 }
