@@ -24,5 +24,4 @@ public class UncrossedLines1035 {
         maxUncrossedLines(nums1, nums2, i, j + 1, memo)
     );
   }
-
 }
