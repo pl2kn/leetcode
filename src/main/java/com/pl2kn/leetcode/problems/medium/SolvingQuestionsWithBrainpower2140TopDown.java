@@ -1,6 +1,6 @@
 package com.pl2kn.leetcode.problems.medium;
 
-public class SolvingQuestionsWithBrainpower2140 {
+public class SolvingQuestionsWithBrainpower2140TopDown {
 
   public long mostPoints(int[][] questions) {
     return mostPoints(questions, 0, new Long[questions.length]);
