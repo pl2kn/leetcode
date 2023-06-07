@@ -1,6 +1,5 @@
 package com.pl2kn.leetcode.problems.easy;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
