@@ -1,5 +1,10 @@
 package com.pl2kn.leetcode.problems.medium;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class PossibleBipartition886 {
 
   public boolean possibleBipartition(int n, int[][] dislikes) {
