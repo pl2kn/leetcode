@@ -1,32 +1,35 @@
 package com.pl2kn.leetcode.problems.medium;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class ReverseWordsInAString151 {
 
   public String reverseWords(String s) {
-    StringBuilder result = new StringBuilder();
-    Queue<Integer> queue = new ArrayDeque<>();
-    int length = s.length();
-    int wordStart;
-    int wordEnd = length - 1;
-    while (wordEnd >= 0) {
-      while (wordEnd >= 0 && s.charAt(wordEnd) == ' ') {
-        wordEnd--;
+    char[] chars = s.toCharArray();
+    int n = s.length();
+
+    reverse(chars, 0, n - 1);
+
+    for (int left = 0, right = 0; right < n; right++) {
+      while (left < n && chars[left] == ' ') {
+        left++;
       }
-      wordStart = wordEnd;
-      while (wordStart >= 0 && s.charAt(wordStart) != ' ') {
-        wordStart--;
+
+      while (right < n && chars[right] != ' ') {
+        right++;
       }
-      if (wordEnd >= 0) {
-        if (!result.toString().equals("")) {
-          result.append(" ");
-        }
-        result.append(s, wordStart + 1, wordEnd + 1);
-      }
-      wordEnd = wordStart;
+
+      reverse(chars, left, right - 1);
+
+      left = right;
     }
-    return result.toString();
+
+    return new String(chars);
+  }
+
+  public void reverse(char[] chars, int left, int right) {
+    while (left < right) {
+      char tmp = chars[left];
+      chars[left++] = chars[right];
+      chars[right--] = tmp;
+    }
   }
 }
